@@ -1,0 +1,15 @@
+<script webc:type="render" webc:is="template">
+		function() {
+			// Free idea: use the Eleventy Image plugin to return optimized markup
+			// return `${this.children}`;
+			return `<template webc:nokeep webc:for="child of this.children">
+		<template webc:nokeep webc:if="typeof child === 'string'">
+			<span @text="child" webc:keep></span>
+		</template>
+		<template webc:nokeep webc:if="child instanceof Array">
+			<span>YES IT'S AN ARRAY</span>
+			<my-component-builder :@children="child"></my-component-builder>
+		</template>
+	</template>`;
+		}
+</script>

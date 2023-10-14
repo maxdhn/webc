@@ -1,0 +1,26 @@
+<template webc:nokeep webc:for="child of children">
+	<template webc:nokeep webc:if="child.component === 'input'">
+		<span>INPUT</span>
+	</template>
+	<template webc:nokeep webc:elseif="child.component === 'select'">
+		<span>SELECT</span>
+	</template>
+	<template webc:nokeep webc:elseif="child.component === 'checkbox'">
+		<span>CHECKBOX</span>
+	</template>
+	<template webc:nokeep webc:elseif="child.component === 'radio'">
+		<span>RADIO</span>
+	</template>
+	<template webc:nokeep webc:elseif="typeof child === 'string'">
+		<span @text="child" webc:keep></span>
+	</template>
+	<template webc:nokeep webc:if="child instanceof Array">
+		<my-component-builder :@children="child"></my-component-builder>
+	</template>
+	<!-- <template
+		webc:nokeep
+		webc:if="child.children && child.children instanceof Array"
+	>
+		<my-component-builder :@children="child.children"></my-component-builder>
+	</template> -->
+</template>

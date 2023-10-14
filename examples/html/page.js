@@ -3,10 +3,12 @@ import { WebC } from "../../webc.js";
 let page = new WebC();
 
 page.setInputPath("page.webc");
+// Pass in a glob, using the file name as component name
+page.defineComponents("components/**.webc");
 
 let { html, css, js, components } = await page.compile({
 	data: {
-		dataProperty: "dataValue",
+		dataProperty: ["PARENT VALUE", ["CHILD VALUE 1", "CHILD VALUE 2"]],
 	},
 });
 console.log({ html, css, js, components });
